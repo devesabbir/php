@@ -1,0 +1,13 @@
+header {
+  background-color: #ec8b04f2;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+:root {
+  --primary-color: #003060;
+  --background-color: #055c9d;
+  --accent-color: #0e86d4;
+  --text-color: #ffffff;
+}
