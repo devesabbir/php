@@ -4,6 +4,7 @@ $name = $_POST['name'];
 $email = $_POST['email'];
 $age = $_POST['age'];
 
+
 // validate the data
 if (empty($name) || empty($email) || empty($age)):
     echo "Please fill out all fields";
@@ -31,6 +32,8 @@ endif;
 
 <body>
 
+    Welcome <?php echo $_POST["name"]; ?><br>
+    Your email address is: <?php echo $_POST["email"]; ?>
 
 </body>
 
