@@ -4,50 +4,35 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-<head></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 
 <body>
 
-    <!-- The PHP superglobals $_GET and $_POST are used to collect form-data. -->
+    <h1>Form validation</h1>
 
-    <h1>PHP - A Simple HTML Form</h1>
-    <!-- <form action="welcome.php" method="POST">
-        Name: <input type="text" name="name"><br>
-        E-mail: <input type="text" name="email"><br>
-        <input type="submit">
-    </form> -->
+    <form action="welcome.php" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <br><br>
 
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-        Name: <input type="text" name="name"><br>
-        E-mail: <input type="text" name="email"><br>
-        <input type="submit">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email">
+        <br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="1" max="100">
+        <br><br>
+
+        <input type="submit" value="Submit">
     </form>
 
-    <div>
-        <?php
-        // test input data
-        function test_input($data)
-        {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-        }
 
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $name = test_input($_POST["name"]);
-            $email = test_input($_POST["email"]);
-            echo "" . $name . "</br>" . $email . "";
-        } else if ($_SERVER[""] !== "POST") {
-            echo "<p>This method is not allowed!</p>";
-
-        }
-        ?>
-    </div>
 </body>
-
-</html>
 
 </html>

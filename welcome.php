@@ -1,4 +1,22 @@
 <?php
+// Get Form Data
+$name = $_POST['name'];
+$email = $_POST['email'];
+$age = $_POST['age'];
+
+// validate the data
+if (empty($name) || empty($email) || empty($age)):
+    echo "Please fill out all fields";
+else:
+    // email validation
+    if (!filter_var($email, )):
+        echo "Invalid email format";
+    else:
+        echo "<h1>Welcome, $name!</h1>";
+        echo "<p>Your email is: $email</p>";
+        echo "<p>Your age is: $age</p>";
+    endif;
+endif;
 
 ?>
 
@@ -12,21 +30,7 @@
 </head>
 
 <body>
-    <?php
-    // PHP form data collect from user
-    // $name = $_POST['name'];
-    // $email = $_POST['email'];
-    // Using GET method
-    $name = $_GET['name'];
-    $email = $_GET['email'];
 
-    ?>
-    <h1>Welcome <?php echo $name; ?></h1>
-    <p>Your email address is: <?php echo $email; ?></p>
-
-    <?php
-    echo var_dump($_GET);
-    ?>
 
 </body>
 
