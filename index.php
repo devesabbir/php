@@ -1,58 +1,32 @@
 <?php
 
-// Initialize variables
-$name = $_POST['name'] ?? '';
+function getGrade($score)
+{
+    return match (true) {
+        $score >= 90 => "A",
+        $score >= 80 => "B",
+        $score >= 70 => "C",
+        $score >= 60 => "D",
+        $score >= 50 => "E",
+        $score >= 0 => "F",
+        default => "Invalid score",
+    };
+}
 
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-
-    <h1>Form validation</h1>
-
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name">
-        <?php
-        // Display error message if name is empty\
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($name)) {
-            echo "<span style='color: red;'>Name is required</span>";
-        }
-
-        ?>
-        <br><br>
-
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email">
-        <?php
-        // Display error message if email is empty or invalid
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $email = $_POST['email'] ?? '';
-            if (empty($email)) {
-                echo "<span style='color: red;'>Email is required</span>";
-            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                echo "<span style='color: red;'>Invalid email format</span>";
-            }
-        }
-        ?>
-        <br><br>
-
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" min="1" max="100">
-        <br><br>
-
-        <input type="submit" value="Submit">
-    </form>
+function getGradeMessage($score)
+{
+    $grade = getGrade($score);
+    return match ($grade) {
+        "A" => "Excellent work!",
+        "B" => "Good job!",
+        "C" => "You passed.",
+        "D" => "You barely passed.",
+        "E" => "You need to improve.",
+        "F" => "Failed. Please try again.",
+        default => $grade,
+    };
+}
 
 
-</body>
-
-</html>
+// Example usage
+echo getGradeMessage(90) . "\n"; // Output: Good job!
